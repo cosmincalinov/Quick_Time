@@ -199,3 +199,117 @@ void displayWelcome() {
     lcd.setCursor(0, 1);
     lcd.print("Press Start");
 }
+
+// SLAVE
+
+// #include <Arduino.h>
+// #include <SPI.h>
+
+// const int redRGB1 = 4, greenRGB1 = 9, blueRGB1 = 8;
+// const int redRGB2 = 5, greenRGB2 = 6, blueRGB2 = 7;
+
+// const int BTNP1 = A0;
+// const int BTNP2 = A1;
+
+// unsigned long pressStartTime = 0;
+// bool waitingForPress = false;
+// bool player1Turn = true;
+// volatile char cmd = ' ';
+// volatile boolean received = false;
+
+// enum RGBState { RED, GREEN, BLUE, OFF };
+
+// void setRGB1Col(RGBState state);
+// void setRGB2Col(RGBState state);
+// void resetLEDs();
+// void startRound();
+// void handleBtn();
+
+// void setup() {
+//     Serial.begin(9600);
+//     pinMode(redRGB1, OUTPUT); pinMode(greenRGB1, OUTPUT); pinMode(blueRGB1, OUTPUT);
+//     pinMode(redRGB2, OUTPUT); pinMode(greenRGB2, OUTPUT); pinMode(blueRGB2, OUTPUT);
+//     pinMode(BTNP1, INPUT); pinMode(BTNP2, INPUT);
+
+//     resetLEDs();
+//     SPCR |= _BV(SPE);
+//     SPI.attachInterrupt();
+// }
+
+// ISR(SPI_STC_vect) {
+//     char receivedCmd = SPDR;
+//     if (receivedCmd != '#') {
+//         cmd = receivedCmd;
+//         received = true;
+//     }
+// }
+
+// void loop() {
+//     if (received) {
+//         received = false;
+
+//         if (cmd == 'r' || cmd == 'g' || cmd == 'b') {
+//             startRound();
+//         } else if (cmd == '0') {
+//             resetLEDs();
+//         }
+//     }
+
+//     if (waitingForPress) {
+//         handleBtn();
+//     }
+
+    
+// }
+
+// void startRound() {
+//     pressStartTime = millis();
+//     waitingForPress = true;
+//     RGBState color = (cmd == 'r') ? RED : (cmd == 'g') ? GREEN : BLUE;
+
+//     if (player1Turn) {
+//         setRGB1Col(color);
+//         setRGB2Col(OFF);
+//     } else {
+//         setRGB2Col(color);
+//         setRGB1Col(OFF);
+//     }
+//     player1Turn = !player1Turn;
+        
+
+// }
+
+// void handleBtn() {
+//     int temp1 = analogRead(BTNP1);
+//     int temp2 = analogRead(BTNP2);
+//     unsigned long elapsedTime = millis() - pressStartTime;
+
+//     if (player1Turn) {
+//         if (temp1 < 200) return;
+//         SPDR = (cmd == 'r' && temp1 < 350) || (cmd == 'g' && temp1 < 475) || (cmd == 'b') ? 'a' : 'i';
+        
+//     } else {
+//         if (temp2 < 200) return;
+//         SPDR = (cmd == 'r' && temp2 < 350) || (cmd == 'g' && temp2 < 475) || (cmd == 'b') ? 'a' : 'i';
+//     }
+
+//     waitingForPress = false;
+//     resetLEDs();
+// }
+
+// void setRGB1Col(RGBState state) {
+//     digitalWrite(redRGB1, state == RED);
+//     digitalWrite(greenRGB1, state == GREEN);
+//     digitalWrite(blueRGB1, state == BLUE);
+// }
+
+// void setRGB2Col(RGBState state) {
+//     digitalWrite(redRGB2, state == RED);
+//     digitalWrite(greenRGB2, state == GREEN);
+//     digitalWrite(blueRGB2, state == BLUE);
+// }
+
+// void resetLEDs() {
+//     setRGB1Col(OFF);
+//     setRGB2Col(OFF);
+// }
