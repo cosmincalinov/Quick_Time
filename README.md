@@ -26,7 +26,7 @@ Each player will have their own buttons and LEDs, and the game will take place o
 ### Project schematic
 ![Circuit](./time.jpeg)
 ## Live circuit
-![circ1](./poza_circ.jpeg)
+![circ1](./sch.jpeg)
 
 ## Final result
 https://youtu.be/QipS0Jelmyw
